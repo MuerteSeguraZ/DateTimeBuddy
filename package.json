@@ -1,0 +1,38 @@
+{
+  "name": "datetimebuddy",
+  "description": "A lightweight, chainable DateTime utility for JavaScript and TypeScript with UTC support, formatting, and date math.",
+  "version": "2.0.4",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "datetime",
+    "date",
+    "time",
+    "date-time",
+    "dateutils",
+    "date-utility",
+    "typescript",
+    "javascript",
+    "utc",
+    "formatting",
+    "date-format",
+    "time-manipulation",
+    "date-library",
+    "datehelper",
+    "chainable",
+    "mjs",
+    "multilangsupport"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build && npm run test",
+    "build": "tsup src/index.ts --dts --format cjs,esm",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.0.4",
+    "vitest": "^0.34.3"
+  }
+}

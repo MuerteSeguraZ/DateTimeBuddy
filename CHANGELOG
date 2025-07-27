@@ -1,0 +1,27 @@
+# Changelog
+
+All notable changes to **DateTimeBuddy** will be documented in this file.
+
+## [2.0.4] - 2025-07-27
+
+### Added
+- `fromNow()` — Returns a string like `in 5 minutes` or `30 seconds ago` based on current time and instance.
+- `timeAgo()` — Returns a human-readable string like `2 hours ago`, `just now`, etc.
+- Friendly formatting examples in multiple locales (e.g. French, Japanese).
+- Support for formatting localized strings via `toLocaleString()`-backed helpers (used in tests).
+- Enhanced `daysBetween` logic to support timezone-aware comparisons.
+- Sample test script output now includes:
+  - Timezone switching demo
+  - Start/end of day in local timezones
+  - Locale-specific friendly strings
+
+### Changed
+- Improved time difference math for more accurate second granularity in `fromNow()` and `timeAgo()`.
+- Test output shows UTC and localized behavior side by side for better debugging.
+
+### Fixed
+- Cloning preserves timezone properly.
+- `equals` comparison now distinguishes between date-only vs full date-time.
+
+---
+

@@ -1,0 +1,39 @@
+C:\Users\goofy\Desktop\Projectes\NPM\DateTimeBuddy>npm run test
+
+> datetimebuddy@2.0.3 test
+> vitest run
+
+
+ RUN  v0.34.6 C:/Users/goofy/Desktop/Projectes/NPM/DateTimeBuddy
+
+ ✓ test/datetimebuddy.test.ts (24)
+   ✓ DateTimeBuddy (24)
+     ✓ creates instance with now
+     ✓ creates instance from string and number
+     ✓ adds and subtracts days
+     ✓ adds and subtracts hours and minutes
+     ✓ accesses individual date parts
+     ✓ formats date correctly
+     ✓ compares dates
+     ✓ calculates days between
+     ✓ gets start and end of day
+     ✓ gets start and end of month
+     ✓ gets start and end of year
+     ✓ sets date components
+     ✓ clones the instance
+     ✓ converts to Date and ISO string
+     ✓ handles unix timestamp
+     ✓ applies timezone offset correctly
+     ✓ gets weekday and ISO weekday
+     ✓ gets week number
+     ✓ checks leap year
+     ✓ returns days in month
+     ✓ checks if date is weekend
+     ✓ compares by date only
+     ✓ returns relative time
+     ✓ formats friendly
+
+ Test Files  1 passed (1)
+      Tests  24 passed (24)
+   Start at  10:11:22
+   Duration  612ms (transform 147ms, setup 0ms, collect 139ms, tests 115ms, environment 0ms, prepare 162ms)

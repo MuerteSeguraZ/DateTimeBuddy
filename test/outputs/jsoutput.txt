@@ -1,0 +1,36 @@
+C:\Users\goofy\Desktop\Projectes\NPM\DateTimeBuddy\test>node datetimebuddytest.js
+Format (UTC): 2025-07-26 15:04:05
+Year: 2025
+Month: 7
+Day: 26
+Hour: 15
+Minute: 4
+Second: 5
+Weekday: Saturday
+ISO Weekday: 6
+Week Number: 30
+Is Leap Year: false
+Days in Month: 31
+Is Weekend: true
+Add 1 day: 2025-07-27
+Subtract 1 hour: 14:04
+Start of Day: 2025-07-26 00:00:00
+End of Month: 2025-07-31 23:59:59
+Days between: 3
+Equals date only: false
+To Unix timestamp: 1753542245
+From Unix timestamp: 2025-07-26T15:04:05.000Z
+Clone equals original: true
+From now (future): 17 hours ago
+Time ago (past): 17 hours ago
+
+Format (America/New_York): 2025-07-26 11:04:05
+Timezone: America/New_York
+Format after timezone change (Asia/Tokyo): 2025-07-27 00:04:05
+Timezone now: Asia/Tokyo
+Start of Day (Asia/Tokyo): 2025-07-26 09:00:00
+End of Day (Asia/Tokyo): 2025-07-27 08:59:59
+Days between NY and LA instances: 3
+Friendly Format (default locale): Saturday, July 26, 2025 at 15:04:05
+Friendly Format (Japanese): 2025年7月26日土曜日 15:04:05
+Friendly Format (French): samedi 26 juillet 2025 à 15:04:05
