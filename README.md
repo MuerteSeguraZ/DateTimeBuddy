@@ -14,7 +14,7 @@ A lightweight, UTC-based date/time utility class for JavaScript and TypeScript. 
 - Format using tokens: `YYYY`, `MM`, `DD`, `HH`, `mm`, `ss` (all in the chosen timezone)  
 - Convert to/from Unix timestamps  
 - Clone and safely modify instances  
-- Generate human-readable relative times (`fromNow`, `timeAgo`) 
+- Generate human-readable relative times (`fromNow`, `timeAgo`)  
 - Fully typed, tree-shakable, and supports both ESM & CommonJS  
 
 ---
@@ -105,13 +105,22 @@ Creates a new instance with optional date and timezone.
 * `hour()`
 * `minute()`
 * `second()`
+* `getWeekday()` — Returns weekday name (e.g. `'Monday'`)
+* `getISOWeekday()` — Returns 1 (Monday) to 7 (Sunday)
+* `getWeekNumber()` — ISO week number of the year
+* `isLeapYear()` — Checks if year is a leap year
+* `daysInMonth()` — Returns number of days in current month
+* `isWeekend()` — Returns `true` if Saturday or Sunday
 
 #### Comparison
 
 * `isBefore(other: Date | DateTimeBuddy)`
 * `isAfter(other: Date | DateTimeBuddy)`
 * `isSame(other: Date | DateTimeBuddy)`
+* `compare(other: Date | DateTimeBuddy)` — Returns `-1`, `0`, or `1`
+* `equalsDateOnly(other: Date | DateTimeBuddy)` — Compares only year/month/day
 * `daysBetween(other: Date | DateTimeBuddy)`
+* `diffIn(other: Date | DateTimeBuddy, unit?: 'seconds' | 'minutes' | 'hours' | 'days')` — Returns signed difference
 
 #### Boundary Helpers (based on timezone)
 
@@ -122,14 +131,10 @@ Creates a new instance with optional date and timezone.
 * `startOfYear()`
 * `endOfYear()`
 
-#### Relative Time (New!)
+#### Relative Time
 
-* `fromNow(): string`
-
-  * Returns a future or past expression like `in 3 minutes`, `just now`, or `10 seconds ago`
-* `timeAgo(): string`
-
-  * Returns how long ago the instance was from now (e.g., `5 days ago`, `just now`)
+* `fromNow()` — e.g., `in 3 minutes`, `2 days ago`
+* `timeAgo()` — e.g., `5 days ago`, `just now`
 
 #### Utilities
 
@@ -137,22 +142,16 @@ Creates a new instance with optional date and timezone.
 * `clone()`
 * `toDate()` — returns native `Date` (UTC)
 * `toISOString()` — ISO string representation (UTC)
+* `toUTCString()` — Returns standard UTC string
+* `toJSON()` — Same as `.toISOString()`
+* `toLocaleString(locale?: string)` — Locale-aware string (date and time)
+* `toLocaleDateString(locale?: string)` — Locale-aware date string only
 * `toUnixTimestamp()` — seconds since Unix epoch
 
 #### Formatting
 
-```ts
-dt.format("YYYY-MM-DD HH:mm:ss");
-```
-
-Supported tokens:
-
-* `YYYY` — full year
-* `MM` — month (01–12)
-* `DD` — day of month (01–31)
-* `HH` — hour (00–23, in specified timezone)
-* `mm` — minutes (00–59)
-* `ss` — seconds (00–59)
+* `format(fmt: string)` — Token-based custom formatting
+* `formatFriendly(locale?: string)` — Returns user-friendly string (e.g., `"Saturday, July 26, 2025 at 15:04:05"`)
 
 ---
 
@@ -184,4 +183,5 @@ MIT © [MuerteSeguraZ](https://github.com/MuerteSeguraZ)
 
 ---
 
+```
 ```

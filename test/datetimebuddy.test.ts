@@ -159,4 +159,45 @@ describe("DateTimeBuddy", () => {
     expect(formatted).toContain("Saturday");
     expect(formatted).toContain("2025");
   });
+
+    it("returns UTC string", () => {
+    const dt = new DateTimeBuddy("2025-07-26T00:00:00Z");
+    expect(dt.toUTCString()).toBe("Sat, 26 Jul 2025 00:00:00 GMT");
+  });
+
+  it("returns JSON and ISO string", () => {
+    const dt = new DateTimeBuddy("2025-07-26T00:00:00Z");
+    expect(dt.toJSON()).toBe("2025-07-26T00:00:00.000Z");
+  });
+
+  it("returns locale string representations", () => {
+    const dt = new DateTimeBuddy("2025-07-26T15:04:05Z");
+
+    const localeStr = dt.toLocaleString("en-US");
+    expect(typeof localeStr).toBe("string");
+    expect(localeStr).toContain("2025");
+
+    const localeDate = dt.toLocaleDateString("en-US");
+    expect(typeof localeDate).toBe("string");
+  });
+
+  it("compares dates using compare()", () => {
+    const dt1 = new DateTimeBuddy("2025-07-26T00:00:00Z");
+    const dt2 = new DateTimeBuddy("2025-07-27T00:00:00Z");
+    const dt3 = new DateTimeBuddy("2025-07-26T00:00:00Z");
+
+    expect(dt1.compare(dt2)).toBe(-1);
+    expect(dt2.compare(dt1)).toBe(1);
+    expect(dt1.compare(dt3)).toBe(0);
+  });
+
+  it("calculates diffIn with various units using Math.floor", () => {
+  const dt1 = new DateTimeBuddy("2025-07-26T00:00:00Z");
+  const dt2 = new DateTimeBuddy("2025-07-27T12:34:56Z"); // 1d 12h 34m 56s later
+
+  expect(dt2.diffIn(dt1, "seconds")).toBe(131696);  // 1d * 86400 + 12h * 3600 + 34m * 60 + 56
+  expect(dt2.diffIn(dt1, "minutes")).toBe(2194);     // 131696 / 60
+  expect(dt2.diffIn(dt1, "hours")).toBe(36);         // 2194 / 60
+  expect(dt2.diffIn(dt1, "days")).toBe(1);           // 36 / 24
+  });
 });

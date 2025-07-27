@@ -2,26 +2,23 @@
 
 All notable changes to **DateTimeBuddy** will be documented in this file.
 
-## [2.0.4] - 2025-07-27
+## [2.0.5] - 2025-07-27
 
 ### Added
-- `fromNow()` — Returns a string like `in 5 minutes` or `30 seconds ago` based on current time and instance.
-- `timeAgo()` — Returns a human-readable string like `2 hours ago`, `just now`, etc.
-- Friendly formatting examples in multiple locales (e.g. French, Japanese).
-- Support for formatting localized strings via `toLocaleString()`-backed helpers (used in tests).
-- Enhanced `daysBetween` logic to support timezone-aware comparisons.
-- Sample test script output now includes:
-  - Timezone switching demo
-  - Start/end of day in local timezones
-  - Locale-specific friendly strings
+- `compare(other: Date | DateTimeBuddy)` — Returns `-1`, `0`, or `1` when comparing two instances.
+- `equalsDateOnly(other: Date | DateTimeBuddy)` — Compares only year, month, and day, ignoring time.
+- `diffIn(other: Date | DateTimeBuddy, unit?: 'seconds' | 'minutes' | 'hours' | 'days')` — Returns signed difference in specified unit.
+- `toUTCString()` — Returns standard UTC string representation of the date.
+- `toJSON()` — Alias to `toISOString()`, returns JSON-compatible ISO string.
+- `toLocaleString(locale?: string)` — Returns locale-aware date and time string.
+- `toLocaleDateString(locale?: string)` — Returns locale-aware date-only string.
+- Extended tests and examples showcasing new methods.
 
 ### Changed
-- Improved time difference math for more accurate second granularity in `fromNow()` and `timeAgo()`.
-- Test output shows UTC and localized behavior side by side for better debugging.
+- Updated documentation and README with new methods.
+- Test script output now includes detailed comparison, diffIn, and localized formatting examples.
 
 ### Fixed
-- Cloning preserves timezone properly.
-- `equals` comparison now distinguishes between date-only vs full date-time.
+- No bugs found.
 
 ---
-

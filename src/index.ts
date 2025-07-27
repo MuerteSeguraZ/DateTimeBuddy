@@ -214,6 +214,18 @@ export class DateTimeBuddy {
     return formatStr.replace(/YYYY|MM|DD|HH|mm|ss/g, (match) => replacements[match] || match);
   }
 
+  diffIn(other: DateTimeBuddy, unit: 'seconds' | 'minutes' | 'hours' | 'days' = 'seconds'): number {
+  const diffMs = this.date.getTime() - other.date.getTime();
+  const map = {
+    seconds: 1000,
+    minutes: 1000 * 60,
+    hours: 1000 * 60 * 60,
+    days: 1000 * 60 * 60 * 24,
+  };
+  return Math.floor(diffMs / map[unit]);
+}
+
+
   toDate(): Date {
     return new Date(this.date.getTime());
   }
@@ -271,6 +283,29 @@ export class DateTimeBuddy {
     const y = this.year();
     return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
   }
+
+  toUTCString(): string {
+  return this.date.toUTCString();
+}
+
+  toJSON(): string {
+    return this.toISOString();
+  }
+
+  toLocaleString(locale = 'en-US', options?: Intl.DateTimeFormatOptions): string {
+  return this.date.toLocaleString(locale, { timeZone: this.timeZone, ...options });
+  }
+
+  toLocaleDateString(locale = 'en-US', options?: Intl.DateTimeFormatOptions): string {
+  return this.date.toLocaleDateString(locale, { timeZone: this.timeZone, ...options });
+}
+
+  compare(other: DateTimeBuddy): number {
+  const diff = this.date.getTime() - other.date.getTime();
+  return diff === 0 ? 0 : diff > 0 ? 1 : -1;
+}
+
+
 
   daysInMonth(): number {
     const y = this.year();
@@ -358,4 +393,19 @@ timeAgo(): string {
       ...options
     }).format(this.date);
   }
+
+  isToday(): boolean {
+  const today = new DateTimeBuddy(new Date(), this.timeZone);
+  return this.equalsDateOnly(today);
+}
+
+  isTomorrow(): boolean {
+  const tomorrow = new DateTimeBuddy(new Date(), this.timeZone).addDays(1);
+  return this.equalsDateOnly(tomorrow);
+}
+
+  isYesterday(): boolean {
+  const yesterday = new DateTimeBuddy(new Date(), this.timeZone).subtractDays(1);
+  return this.equalsDateOnly(yesterday);
+}
 }

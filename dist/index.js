@@ -188,6 +188,16 @@ var DateTimeBuddy = class _DateTimeBuddy {
     };
     return formatStr.replace(/YYYY|MM|DD|HH|mm|ss/g, (match) => replacements[match] || match);
   }
+  diffIn(other, unit = "seconds") {
+    const diffMs = this.date.getTime() - other.date.getTime();
+    const map = {
+      seconds: 1e3,
+      minutes: 1e3 * 60,
+      hours: 1e3 * 60 * 60,
+      days: 1e3 * 60 * 60 * 24
+    };
+    return Math.floor(diffMs / map[unit]);
+  }
   toDate() {
     return new Date(this.date.getTime());
   }
@@ -234,6 +244,22 @@ var DateTimeBuddy = class _DateTimeBuddy {
   isLeapYear() {
     const y = this.year();
     return y % 4 === 0 && y % 100 !== 0 || y % 400 === 0;
+  }
+  toUTCString() {
+    return this.date.toUTCString();
+  }
+  toJSON() {
+    return this.toISOString();
+  }
+  toLocaleString(locale = "en-US", options) {
+    return this.date.toLocaleString(locale, { timeZone: this.timeZone, ...options });
+  }
+  toLocaleDateString(locale = "en-US", options) {
+    return this.date.toLocaleDateString(locale, { timeZone: this.timeZone, ...options });
+  }
+  compare(other) {
+    const diff = this.date.getTime() - other.date.getTime();
+    return diff === 0 ? 0 : diff > 0 ? 1 : -1;
   }
   daysInMonth() {
     const y = this.year();
@@ -302,6 +328,18 @@ var DateTimeBuddy = class _DateTimeBuddy {
       hour12: false,
       ...options
     }).format(this.date);
+  }
+  isToday() {
+    const today = new _DateTimeBuddy(/* @__PURE__ */ new Date(), this.timeZone);
+    return this.equalsDateOnly(today);
+  }
+  isTomorrow() {
+    const tomorrow = new _DateTimeBuddy(/* @__PURE__ */ new Date(), this.timeZone).addDays(1);
+    return this.equalsDateOnly(tomorrow);
+  }
+  isYesterday() {
+    const yesterday = new _DateTimeBuddy(/* @__PURE__ */ new Date(), this.timeZone).subtractDays(1);
+    return this.equalsDateOnly(yesterday);
   }
 };
 // Annotate the CommonJS export names for ESM import in node:

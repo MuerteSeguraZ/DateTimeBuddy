@@ -40,6 +40,7 @@ declare class DateTimeBuddy {
         second?: number;
     }): this;
     format(formatStr: string): string;
+    diffIn(other: DateTimeBuddy, unit?: 'seconds' | 'minutes' | 'hours' | 'days'): number;
     toDate(): Date;
     toISOString(): string;
     toUnixTimestamp(): number;
@@ -50,12 +51,20 @@ declare class DateTimeBuddy {
     getISOWeekday(): number;
     getWeekNumber(): number;
     isLeapYear(): boolean;
+    toUTCString(): string;
+    toJSON(): string;
+    toLocaleString(locale?: string, options?: Intl.DateTimeFormatOptions): string;
+    toLocaleDateString(locale?: string, options?: Intl.DateTimeFormatOptions): string;
+    compare(other: DateTimeBuddy): number;
     daysInMonth(): number;
     isWeekend(): boolean;
     equalsDateOnly(other: DateTimeBuddy): boolean;
     fromNow(): string;
     timeAgo(): string;
     formatFriendly(locale?: string, options?: Intl.DateTimeFormatOptions): string;
+    isToday(): boolean;
+    isTomorrow(): boolean;
+    isYesterday(): boolean;
 }
 
 export { DateTimeBuddy };
