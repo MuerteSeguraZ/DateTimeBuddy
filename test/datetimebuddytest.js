@@ -69,3 +69,18 @@ console.log("\n=== Friendly Formats ===");
 console.log("Friendly Format (default):", dt.formatFriendly());
 console.log("Friendly Format (ja-JP):", dt.formatFriendly("ja-JP"));
 console.log("Friendly Format (fr-FR):", dt.formatFriendly("fr-FR"));
+
+const weekTest = dt.currentWeek();
+console.log("Current Week Start:", weekTest.start.format("YYYY-MM-DD HH:mm:ss"));
+console.log("Current Week End:", weekTest.end.format("YYYY-MM-DD HH:mm:ss"));
+
+const next = dt.nextWeek();
+console.log("Next Week Start:", next.start.format("YYYY-MM-DD"));
+console.log("Next Week End:", next.end.format("YYYY-MM-DD"));
+
+const prev = dt.previousWeek();
+console.log("Previous Week Start:", prev.start.format("YYYY-MM-DD"));
+console.log("Previous Week End:", prev.end.format("YYYY-MM-DD"));
+
+console.log("Add 2 Weeks:", dt.clone().addWeeks(2).format("YYYY-MM-DD"));
+console.log("Subtract 1 Week:", dt.clone().subtractWeeks(1).format("YYYY-MM-DD"));

@@ -3,7 +3,7 @@
 git add --all
 
 set MSG=%1
-if "%MSG%"=="" set MSG=Added new features, such as "toLocaleString()".
+if "%MSG%"=="" set MSG=More week management.
 
 git commit -m "%MSG%"
 

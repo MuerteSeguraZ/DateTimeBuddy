@@ -1,24 +1,14 @@
-# Changelog
 
-All notable changes to **DateTimeBuddy** will be documented in this file.
-
-## [2.0.5] - 2025-07-27
+## DateTimeBuddy Update \[2.0.6] - 2025-07-27
 
 ### Added
-- `compare(other: Date | DateTimeBuddy)` — Returns `-1`, `0`, or `1` when comparing two instances.
-- `equalsDateOnly(other: Date | DateTimeBuddy)` — Compares only year, month, and day, ignoring time.
-- `diffIn(other: Date | DateTimeBuddy, unit?: 'seconds' | 'minutes' | 'hours' | 'days')` — Returns signed difference in specified unit.
-- `toUTCString()` — Returns standard UTC string representation of the date.
-- `toJSON()` — Alias to `toISOString()`, returns JSON-compatible ISO string.
-- `toLocaleString(locale?: string)` — Returns locale-aware date and time string.
-- `toLocaleDateString(locale?: string)` — Returns locale-aware date-only string.
-- Extended tests and examples showcasing new methods.
 
-### Changed
-- Updated documentation and README with new methods.
-- Test script output now includes detailed comparison, diffIn, and localized formatting examples.
-
-### Fixed
-- No bugs found.
+* `currentWeek()` — Returns start and end `DateTimeBuddy` instances for the current week (Mon–Sun).
+* `nextWeek()` — Returns start and end of the next week.
+* `previousWeek()` — Returns start and end of the previous week.
+* `addWeeks(n: number)` — Adds `n` weeks to the instance.
+* `subtractWeeks(n: number)` — Subtracts `n` weeks from the instance.
+* Full test coverage for week navigation and boundary calculations.
+* Console test output shows week logic with sample boundaries and shifted instances.
 
 ---

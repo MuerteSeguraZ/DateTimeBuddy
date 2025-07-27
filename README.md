@@ -90,6 +90,8 @@ Creates a new instance with optional date and timezone.
 
 #### Add / Subtract
 
+* `addWeeks(n: number)`
+* `subtractWeeks(n: number)`
 * `addDays(days: number)`
 * `subtractDays(days: number)`
 * `addHours(hours: number)`
@@ -126,6 +128,9 @@ Creates a new instance with optional date and timezone.
 
 * `startOfDay()`
 * `endOfDay()`
+* `currentWeek()`
+* `previousWeek()`
+* `nextWeek()`
 * `startOfMonth()`
 * `endOfMonth()`
 * `startOfYear()`

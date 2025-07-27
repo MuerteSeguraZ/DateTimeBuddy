@@ -1,14 +1,11 @@
-
-C:\Users\goofy\Desktop\Projectes\NPM\DateTimeBuddy>npm run test
-
-> datetimebuddy@2.0.4 test
+> datetimebuddy@2.0.6 test
 > vitest run
 
 
  RUN  v0.34.6 C:/Users/goofy/Desktop/Projectes/NPM/DateTimeBuddy
 
- ✓ test/datetimebuddy.test.ts (29)
-   ✓ DateTimeBuddy (29)
+ ✓ test/datetimebuddy.test.ts (35)
+   ✓ DateTimeBuddy (35)
      ✓ creates instance with now
      ✓ creates instance from string and number
      ✓ adds and subtracts days
@@ -38,8 +35,14 @@ C:\Users\goofy\Desktop\Projectes\NPM\DateTimeBuddy>npm run test
      ✓ returns locale string representations
      ✓ compares dates using compare()
      ✓ calculates diffIn with various units using Math.floor
+     ✓ gets current week start and end
+     ✓ gets next week start and end
+     ✓ gets previous week start and end
+     ✓ adds weeks
+     ✓ subtracts weeks
+     ✓ handles week boundary logic
 
  Test Files  1 passed (1)
-      Tests  29 passed (29)
-   Start at  12:21:22
-   Duration  521ms (transform 113ms, setup 0ms, collect 127ms, tests 54ms, environment 0ms, prepare 130ms)
+      Tests  35 passed (35)
+   Start at  16:06:42
+   Duration  531ms (transform 113ms, setup 0ms, collect 122ms, tests 63ms, environment 0ms, prepare 126ms)

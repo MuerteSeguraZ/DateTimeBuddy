@@ -217,6 +217,39 @@ var DateTimeBuddy = class _DateTimeBuddy {
     const weekNo = Math.ceil(((tempDate.getTime() - yearStart.getTime()) / 864e5 + 1) / 7);
     return weekNo;
   }
+  // WEEK MANIPULATION & INFO
+  addWeeks(weeks) {
+    return this.addDays(weeks * 7);
+  }
+  subtractWeeks(weeks) {
+    return this.subtractDays(weeks * 7);
+  }
+  startOfWeek() {
+    const isoWeekday = this.getISOWeekday();
+    return this.clone().subtractDays(isoWeekday - 1).startOfDay();
+  }
+  endOfWeek() {
+    const isoWeekday = this.getISOWeekday();
+    return this.clone().addDays(7 - isoWeekday).endOfDay();
+  }
+  currentWeek() {
+    return {
+      start: this.startOfWeek(),
+      end: this.endOfWeek()
+    };
+  }
+  nextWeek() {
+    return {
+      start: this.clone().addWeeks(1).startOfWeek(),
+      end: this.clone().addWeeks(1).endOfWeek()
+    };
+  }
+  previousWeek() {
+    return {
+      start: this.clone().subtractWeeks(1).startOfWeek(),
+      end: this.clone().subtractWeeks(1).endOfWeek()
+    };
+  }
   isLeapYear() {
     const y = this.year();
     return y % 4 === 0 && y % 100 !== 0 || y % 400 === 0;

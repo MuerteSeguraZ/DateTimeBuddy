@@ -279,6 +279,48 @@ export class DateTimeBuddy {
     return weekNo;
   }
 
+  // WEEK MANIPULATION & INFO
+
+addWeeks(weeks: number): this {
+  return this.addDays(weeks * 7);
+}
+
+subtractWeeks(weeks: number): this {
+  return this.subtractDays(weeks * 7);
+}
+
+startOfWeek(): DateTimeBuddy {
+  const isoWeekday = this.getISOWeekday(); // 1 (Mon) to 7 (Sun)
+  return this.clone().subtractDays(isoWeekday - 1).startOfDay();
+}
+
+endOfWeek(): DateTimeBuddy {
+  const isoWeekday = this.getISOWeekday();
+  return this.clone().addDays(7 - isoWeekday).endOfDay();
+}
+
+currentWeek(): { start: DateTimeBuddy; end: DateTimeBuddy } {
+  return {
+    start: this.startOfWeek(),
+    end: this.endOfWeek(),
+  };
+}
+
+nextWeek(): { start: DateTimeBuddy; end: DateTimeBuddy } {
+  return {
+    start: this.clone().addWeeks(1).startOfWeek(),
+    end: this.clone().addWeeks(1).endOfWeek(),
+  };
+}
+
+previousWeek(): { start: DateTimeBuddy; end: DateTimeBuddy } {
+  return {
+    start: this.clone().subtractWeeks(1).startOfWeek(),
+    end: this.clone().subtractWeeks(1).endOfWeek(),
+  };
+}
+
+
   isLeapYear(): boolean {
     const y = this.year();
     return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;

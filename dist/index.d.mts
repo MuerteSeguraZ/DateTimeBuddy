@@ -50,6 +50,22 @@ declare class DateTimeBuddy {
     getDayOfWeek(): number;
     getISOWeekday(): number;
     getWeekNumber(): number;
+    addWeeks(weeks: number): this;
+    subtractWeeks(weeks: number): this;
+    startOfWeek(): DateTimeBuddy;
+    endOfWeek(): DateTimeBuddy;
+    currentWeek(): {
+        start: DateTimeBuddy;
+        end: DateTimeBuddy;
+    };
+    nextWeek(): {
+        start: DateTimeBuddy;
+        end: DateTimeBuddy;
+    };
+    previousWeek(): {
+        start: DateTimeBuddy;
+        end: DateTimeBuddy;
+    };
     isLeapYear(): boolean;
     toUTCString(): string;
     toJSON(): string;

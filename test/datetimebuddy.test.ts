@@ -200,4 +200,43 @@ describe("DateTimeBuddy", () => {
   expect(dt2.diffIn(dt1, "hours")).toBe(36);         // 2194 / 60
   expect(dt2.diffIn(dt1, "days")).toBe(1);           // 36 / 24
   });
+
+    it("gets current week start and end", () => {
+    const dt = new DateTimeBuddy("2025-07-26T12:00:00Z"); // Saturday
+    const week = dt.currentWeek();
+    expect(week.start.format("YYYY-MM-DD HH:mm:ss")).toBe("2025-07-21 00:00:00"); // Monday
+    expect(week.end.format("YYYY-MM-DD HH:mm:ss")).toBe("2025-07-27 23:59:59");   // Sunday
+  });
+
+  it("gets next week start and end", () => {
+    const dt = new DateTimeBuddy("2025-07-26T12:00:00Z");
+    const week = dt.nextWeek();
+    expect(week.start.format("YYYY-MM-DD")).toBe("2025-07-28");
+    expect(week.end.format("YYYY-MM-DD")).toBe("2025-08-03");
+  });
+
+  it("gets previous week start and end", () => {
+    const dt = new DateTimeBuddy("2025-07-26T12:00:00Z");
+    const week = dt.previousWeek();
+    expect(week.start.format("YYYY-MM-DD")).toBe("2025-07-14");
+    expect(week.end.format("YYYY-MM-DD")).toBe("2025-07-20");
+  });
+
+  it("adds weeks", () => {
+    const dt = new DateTimeBuddy("2025-07-26T00:00:00Z").addWeeks(2);
+    expect(dt.format("YYYY-MM-DD")).toBe("2025-08-09");
+  });
+
+  it("subtracts weeks", () => {
+    const dt = new DateTimeBuddy("2025-07-26T00:00:00Z").subtractWeeks(1);
+    expect(dt.format("YYYY-MM-DD")).toBe("2025-07-19");
+  });
+
+    it("handles week boundary logic", () => {
+    const sunday = new DateTimeBuddy("2025-07-27T23:59:59Z");
+    const monday = new DateTimeBuddy("2025-07-28T00:00:00Z");
+
+    expect(sunday.currentWeek().end.format("YYYY-MM-DD")).toBe("2025-07-27");
+    expect(monday.currentWeek().start.format("YYYY-MM-DD")).toBe("2025-07-28");
+  });
 });
